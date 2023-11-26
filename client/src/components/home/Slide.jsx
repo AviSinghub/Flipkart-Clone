@@ -60,7 +60,7 @@ const Text = styled(Typography)`
 `;
 
 
-const Slide = ({products}) => {
+const Slide = ({products, title, timer}) => {
     const timerURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg';
 
     const renderer = ({ hours, minutes, seconds }) =>{
@@ -71,12 +71,15 @@ const Slide = ({products}) => {
         <Component>
             <Deal>
                 <DealText>
-                    Deals of the Day
+                    {title}
                 </DealText>
-                <Timer>
-                    <img src={timerURL} alt='timer' style={{width: 24 }}/>
-                    <Countdown date={Date.now() + 8.64e+7} renderer={renderer} />
-                </Timer>
+                {
+                    timer &&    
+                    <Timer>
+                        <img src={timerURL} alt='timer' style={{width: 24 }}/>
+                        <Countdown date={Date.now() + 8.64e+7} renderer={renderer} />
+                    </Timer>
+                }
                 <ViewAllButton variant='contained' color='primary' >View All</ViewAllButton>
             </Deal>
             <Divider/>
