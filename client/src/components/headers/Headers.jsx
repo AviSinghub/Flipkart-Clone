@@ -7,7 +7,6 @@ import {Menu} from '@mui/icons-material';
 import Search from './Search';
 import CustomButtons from './CustomButtons';
 import { Link } from 'react-router-dom';
-
 // components**
 
 const StyledHeader = styled(AppBar)`
@@ -76,7 +75,6 @@ const Header = () => {
     );
 
     return ( 
-
         <StyledHeader>
             <Toolbar style={{minHeight: 55}} >
                 <MenuButton color="inherit" onClick={handleOpen} >
