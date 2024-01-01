@@ -1,8 +1,18 @@
+import { Box, Typography } from "@mui/material";
 
 
-const TotalView = () => {
+const TotalView = ({cartItems}) => {
     return (
-        <div>Hello!Total view</div>
+        <Box>
+            <Box>
+                <Typography>PRICE DETAILS</Typography>
+            </Box>
+            <Box>
+                <Typography>Price ({cartItems?.length} item)
+                    <Box component="span" >₹99</Box>
+                </Typography>
+            </Box>
+        </Box>
     );
 }
  
