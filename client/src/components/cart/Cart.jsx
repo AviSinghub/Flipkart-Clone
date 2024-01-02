@@ -4,12 +4,16 @@ import { useSelector } from "react-redux";
 // Components 
 import CartItem from './CartItem';
 import TotalView from './TotalView';
+import EmptyCart from './EmptyCart';
 
 // styling start
-const Container = styled(Grid)`
-    padding: 30px 135px;
-`;
-
+const Container = styled(Grid)(({ theme }) => ({
+    padding: '30px 135px',
+    [theme.breakpoints.down('md')]: {
+        padding: '15px 0'
+    }
+}));
+    
 const Header = styled(Box)`
     padding: 15px 24px;
     background: #fff;
@@ -20,6 +24,7 @@ const ButtonWrapper = styled(Box)`
     background: #fff;
     box-shadow: 0 -2px 10px 0 rgb(0 0 0 / 10%);
     border-top: 1px solid #f0f0f0;
+    margin-bottom:15px;
 `;
 
 const StyledButton = styled(Button)`
@@ -29,8 +34,16 @@ const StyledButton = styled(Button)`
     color: #fff;
     width: 250px;
     height: 51px;
-    border-radius: 4px;
+    border-radius: 2px;
 `;
+
+const LeftComponent = styled(Grid)(({ theme }) =>({
+    paddingRight: 15,
+    [theme.breakpoints.down('md')]: {
+        marginBotttom: 15
+    }
+}))
+   
 
 // styling *x*x*x
 
@@ -43,7 +56,7 @@ const Cart = () => {
                     cartItems.length ?
                     <Container container> 
                         {/* LHSc */}
-                        <Grid item lg={9} md={9} sm={12} xs={12}>
+                        <LeftComponent item lg={9} md={9} sm={12} xs={12}>
                             <Header>
                                 <Typography>
                                     My Cart({cartItems.length})
@@ -57,14 +70,14 @@ const Cart = () => {
                             <ButtonWrapper>
                                 <StyledButton>Place Order</StyledButton>
                             </ButtonWrapper>
-                        </Grid>
+                        </LeftComponent>
 
                         {/* RHSc */}
                         <Grid item lg={3} md={3} sm={12} xs={12}>
                             <TotalView cartItems={cartItems} />
                         </Grid>
                     </Container>
-                : <div>Empty</div>    
+                : <EmptyCart/>    
                 }
             </>
         </div>
